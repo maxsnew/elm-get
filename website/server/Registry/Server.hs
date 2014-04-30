@@ -16,8 +16,8 @@ import System.Exit
 import System.IO
 
 import qualified Elm.Internal.Paths as Elm
-import qualified Registry.Generate.Docs as Docs
-import qualified Registry.Generate.Html as Html
+import qualified Get.Generate.Docs as Docs
+import qualified Get.Generate.Html as Html
 import qualified Registry.Routes as Route
 import qualified Utils.Paths as Path
 

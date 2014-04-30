@@ -11,8 +11,8 @@ import qualified Paths_elm_get as This
 
 data Command
     = Install (Maybe RawLibrary)
-    | Update  { libs :: [String] }
     | Publish
+    | Docs
     deriving (Show, Eq)
 
 parse :: IO Command
@@ -45,7 +45,7 @@ commands =
     hsubparser $ mconcat
     [ command "install" installOpts
     , command "publish" publishOpts
---    , command "update"  updateOpts -- TODO: implement update
+    , command "docs"    docOpts
     ]
 
 installOpts :: ParserInfo Command
@@ -73,20 +73,11 @@ library = Library <$> lib <*> optional ver
     ver = argument str (metavar "VERSION"
                         <> help "Specific version of a project to install")
 
--- | TODO: restore when update is actually implemented
--- updateOpts :: ParserInfo Command
--- updateOpts = info
---   (Update <$> many (argument str (metavar "LIBRARY" <> help "Library to update")))
---   ( fullDesc
---   <> progDesc "Check for updates to any local libraries, ask to upgrade."
---   <> footer   examples
---   )
---   where examples = unlines
---           [ "Examples:"
---           , "  elm-get update             # check for updates to local libraries"
---           , "  elm-get update tom/Array   # update from a specific github repo" ]
-
 publishOpts :: ParserInfo Command
 publishOpts =
     info (pure Publish)
          (fullDesc <> progDesc "Publish project to the central repository")
+
+docOpts :: ParserInfo Command
+docOpts = info (pure Docs)
+               (fullDesc <> progDesc "Generate documentation locally")

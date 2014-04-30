@@ -24,12 +24,17 @@ source-repository head
 Library
   ghc-options:         -threaded -O2 -W
   Hs-Source-Dirs:      src
-  exposed-modules:     Utils.Commands,
+  exposed-modules:     Get.Generate.Docs,
+                       Get.Generate.Elm,
+                       Get.Generate.Html,
+                       Utils.Commands,
                        Utils.Http,
                        Utils.Paths
   Build-depends:       aeson,
+                       aeson-pretty,
                        base >=4.2 && <5,
                        binary,
+                       blaze-html,
                        bytestring,
                        containers,
                        directory,
@@ -43,6 +48,7 @@ Library
                        mtl,
                        network,
                        optparse-applicative,
+                       parsec,
                        pretty,
                        process,
                        resourcet,
@@ -57,6 +63,7 @@ Executable elm-get
                        aeson-pretty,
                        base >=4.2 && <5,
                        binary,
+                       blaze-html,
                        bytestring,
                        containers,
                        directory,
@@ -70,6 +77,7 @@ Executable elm-get
                        mtl,
                        network,
                        optparse-applicative,
+                       parsec,
                        pretty,
                        process,
                        resourcet,

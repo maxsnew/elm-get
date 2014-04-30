@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Registry.Generate.Elm (generate) where
+module Get.Generate.Elm (generate) where
 
 import Control.Applicative ((<$>), (<*>))
 import Control.Monad.Error

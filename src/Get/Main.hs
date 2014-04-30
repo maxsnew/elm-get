@@ -3,18 +3,18 @@ module Main where
 
 import Control.Applicative
 import Control.Monad.Error
-import System.Directory (findExecutable)
+import System.Directory (getCurrentDirectory, findExecutable)
 import System.Exit
 import System.IO
 
 import qualified Elm.Internal.Name as N
 import qualified Elm.Internal.Version as V
 
+import qualified Get.Generate.Docs as Docs
 import qualified Get.Install as Install
 import Get.Library
 import Get.Options as Options
 import qualified Get.Publish as Publish
-import qualified Utils.Commands as Cmd
 
 main :: IO ()
 main = do
@@ -41,8 +41,8 @@ handle options =
           Install.install vsndL
 
     Publish -> Publish.publish
-
-    Update _ -> Cmd.out "Not implemented yet!"
+    Docs    -> void $ Docs.makeHtml =<< (liftIO getCurrentDirectory)
+    
   where
     parseVsn s = case V.fromString s of
       Nothing -> throwError $ unlines $

@@ -1,4 +1,4 @@
-module Registry.Generate.Docs where
+module Get.Generate.Docs where
 
 import Control.Applicative
 import Control.Monad.Error
@@ -12,9 +12,9 @@ import qualified Elm.Internal.Dependencies as D
 import qualified Elm.Internal.Name as N
 import qualified Elm.Internal.Paths as EPath
 
-import qualified Registry.Generate.Elm as Elm
-import qualified Registry.Generate.Html as Html
-import qualified Registry.Generate.Listing as Listing
+import qualified Get.Generate.Elm as Elm
+import qualified Get.Generate.Html as Html
+import qualified Get.Generate.Listing as Listing
 import qualified Utils.Paths as Path
 
 generate :: FilePath -> ErrorT String IO ()
